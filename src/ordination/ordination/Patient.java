@@ -37,6 +37,10 @@ public class Patient {
         this.vaegt = vaegt;
     }
 
+    public ArrayList<Ordination> getOrdinationer() {
+        return ordinationer;
+    }
+
     //TODO: Metoder (med specifikation) til at vedligeholde link til Ordination
     public Ordination addOrdination(Ordination ordination){
             ordinationer.add(ordination);
