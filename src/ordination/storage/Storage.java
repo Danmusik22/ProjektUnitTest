@@ -1,10 +1,8 @@
 package ordination.storage;
-
+import ordination.ordination.Laegemiddel;
+import ordination.ordination.Patient;
 import java.util.ArrayList;
 import java.util.List;
-
-import ordination.Laegemiddel;
-import ordination.Patient;
 
 public class Storage {
 	private List<Patient> patienter;

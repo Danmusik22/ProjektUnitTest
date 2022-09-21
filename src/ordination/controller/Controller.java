@@ -1,15 +1,12 @@
 package ordination.controller;
 
+import ordination.ordination.*;
+import ordination.storage.Storage;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
-import ordination.DagligFast;
-import ordination.DagligSkaev;
-import ordination.Laegemiddel;
-import ordination.PN;
-import ordination.Patient;
-import storage.Storage;
 
 public class Controller {
 	private Storage storage;
@@ -38,7 +35,7 @@ public class Controller {
 	 * @return opretter og returnerer en PN ordination.
 	 */
 	public PN opretPNOrdination(LocalDate startDen, LocalDate slutDen,
-			Patient patient, Laegemiddel laegemiddel, double antal) {
+								Patient patient, Laegemiddel laegemiddel, double antal) {
 		// TODO
 		return null;
 	}
@@ -50,9 +47,9 @@ public class Controller {
 	 * Pre: margenAntal, middagAntal, aftanAntal, natAntal >= 0
 	 */
 	public DagligFast opretDagligFastOrdination(LocalDate startDen,
-			LocalDate slutDen, Patient patient, Laegemiddel laegemiddel,
-			double morgenAntal, double middagAntal, double aftenAntal,
-			double natAntal) {
+												LocalDate slutDen, Patient patient, Laegemiddel laegemiddel,
+												double morgenAntal, double middagAntal, double aftenAntal,
+												double natAntal) {
 		// TODO
 		return null;
 	}
@@ -66,8 +63,8 @@ public class Controller {
 	 * Pre: alle tal i antalEnheder > 0
 	 */
 	public DagligSkaev opretDagligSkaevOrdination(LocalDate startDen,
-			LocalDate slutDen, Patient patient, Laegemiddel laegemiddel,
-			LocalTime[] klokkeSlet, double[] antalEnheder) {
+												  LocalDate slutDen, Patient patient, Laegemiddel laegemiddel,
+												  LocalTime[] klokkeSlet, double[] antalEnheder) {
 		// TODO
 		return null;
 	}

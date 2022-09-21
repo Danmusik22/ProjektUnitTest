@@ -1,15 +1,12 @@
 package ordination.gui;
 
-import controller.Controller;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.GridPane;
-import ordination.DagligFast;
-import ordination.DagligSkaev;
-import ordination.Ordination;
-import ordination.PN;
-import ordination.Patient;
+import ordination.controller.Controller;
+import ordination.ordination.*;
+
 
 public class VisOrdinationPane extends GridPane {
 	private ListView<Patient> lstPatient = new ListView<>();

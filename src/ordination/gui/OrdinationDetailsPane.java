@@ -2,7 +2,6 @@ package ordination.gui;
 
 import java.time.LocalDate;
 
-import controller.Controller;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -10,10 +9,11 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
-import ordination.DagligSkaev;
-import ordination.Dosis;
-import ordination.Ordination;
-import ordination.PN;
+import ordination.controller.Controller;
+import ordination.ordination.DagligSkaev;
+import ordination.ordination.Dosis;
+import ordination.ordination.PN;
+
 
 public class OrdinationDetailsPane extends GridPane {
     private TextField txtStarttid, txtSluttid, txtLaegemiddel, txtDoegndosis,
