@@ -2,12 +2,14 @@ package ordination.ordination;
 
 import java.time.LocalDate;
 
+
 public class PN extends Ordination {
-
     private double antalEnheder;
+    private int antalGange;
 
-    public PN(LocalDate startDen, LocalDate slutDen) {
+    public PN(LocalDate startDen, LocalDate slutDen, double antalEnheder) {
         super(startDen, slutDen);
+        this.antalEnheder = antalEnheder;
     }
 
     /**
@@ -18,8 +20,12 @@ public class PN extends Ordination {
      * @return
      */
     public boolean givDosis(LocalDate givesDen) {
-        // TODO
-        return false;   
+        if (givesDen.isAfter(getStartDen()) && givesDen.isBefore(getSlutDen())){
+            antalGange++;
+            return true;
+        }else {
+            return false;
+        }
     }
 
     public double doegnDosis() {
