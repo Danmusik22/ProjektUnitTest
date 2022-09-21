@@ -1,15 +1,19 @@
 package ordination.ordination;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 
 
 public class PN extends Ordination {
     private double antalEnheder;
     private int antalGange;
+    private ArrayList<LocalDate> datoer;
 
     public PN(LocalDate startDen, LocalDate slutDen, double antalEnheder) {
         super(startDen, slutDen);
         this.antalEnheder = antalEnheder;
+        datoer = new ArrayList<>();
     }
 
     /**
@@ -28,9 +32,16 @@ public class PN extends Ordination {
         }
     }
 
+    /**
+     * beregning af døgndosis - (antalgange * antalEnheder)/Antal dage mellem første
+     * og sidste givning.
+     * @return double, døgndosis.
+     */
     public double doegnDosis() {
-        // TODO
-        return 0.0;
+        LocalDate førstegivning = datoer.get(0);
+        LocalDate sidsteGivning = datoer.get(datoer.size()-1);
+
+        return (antalGange*antalEnheder)/ ChronoUnit.DAYS.between(førstegivning,sidsteGivning);
     }
 
     @Override
