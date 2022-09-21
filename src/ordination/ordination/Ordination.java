@@ -2,17 +2,20 @@ package ordination.ordination;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 
 public abstract class Ordination {
     private LocalDate startDen;
     private LocalDate slutDen;
+    private ArrayList<Laegemiddel> laegemidler;
 
-    // TODO Link til Laegemiddel
-    // TODO constructor (med specifikation)
+    // TODO Link til Laegemiddel check
+    // TODO constructor (med specifikation) check
 
     public Ordination(LocalDate startDen, LocalDate slutDen) {
         this.startDen = startDen;
         this.slutDen = slutDen;
+        laegemidler = new ArrayList<>();
     }
 
     public LocalDate getStartDen() {
@@ -21,6 +24,20 @@ public abstract class Ordination {
 
     public LocalDate getSlutDen() {
         return slutDen;
+    }
+
+    /**
+     * Link til lægemidler:
+     * addlægemiddel
+     */
+    public void addlaegemiddel(Laegemiddel laegemiddel){
+        laegemidler.add(laegemiddel);
+    }
+
+    public void removeLaegemiddel(Laegemiddel laegemiddel){
+        if (laegemidler.contains(laegemiddel)){
+            laegemidler.remove(laegemiddel);
+        }
     }
 
     /**
