@@ -12,6 +12,7 @@ import javafx.scene.paint.Color;
 import ordination.controller.Controller;
 import ordination.ordination.DagligSkaev;
 import ordination.ordination.Dosis;
+import ordination.ordination.Ordination;
 import ordination.ordination.PN;
 
 
