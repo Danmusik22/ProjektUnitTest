@@ -27,7 +27,7 @@ public abstract class Ordination {
 
     /**
      * Link til lægemidler:
-     * addlægemiddel
+     * setlægemiddel
      */
     public void setLaegemiddel(Laegemiddel laegemiddel){
         this.laegemiddel = laegemiddel;
