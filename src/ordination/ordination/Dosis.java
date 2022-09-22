@@ -7,7 +7,7 @@ public class Dosis {
     private double antal;
 
     public Dosis(LocalTime tid, double antal) {
-        super();
+        super(); // ??
         this.tid = tid;
         this.antal = antal;
     }
