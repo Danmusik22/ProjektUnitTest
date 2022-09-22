@@ -15,6 +15,10 @@ public class DagligFast extends Ordination {
         dosis[1] = middagdosis;
         dosis[2] = aftendosis;
         dosis[3] = natdosis;
+        /*
+            Flette denne ind i Constructor ? - OpretDagligFastOrdination
+            - Initialiser dosis, tjek parametre
+         */
     }
 
     public Dosis[] getDoser() {

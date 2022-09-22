@@ -1,6 +1,11 @@
 package ordination.ordination;
 
 public class Laegemiddel {
+
+    /**
+     * Counter for at tælle antal gange lægemidlet bliver ordineret??
+     */
+
     private String navn;
     private double enhedPrKgPrDoegnLet;   // faktor der anvendes hvis patient vejer < 25 kg
     private double enhedPrKgPrDoegnNormal;// faktor der anvendes hvis 25 kg <= patient vægt <= 120 kg
