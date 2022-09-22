@@ -20,6 +20,10 @@ public class DagligFast extends Ordination {
             - Initialiser dosis, tjek parametre
          */
     }
+
+    public Dosis[] getDoser() {
+        return dosis;
+    }
     @Override
     public double samletDosis() {
         return doegnDosis() * antalDage();

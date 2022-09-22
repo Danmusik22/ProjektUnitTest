@@ -7,7 +7,6 @@ import java.util.ArrayList;
 
 public class PN extends Ordination {
     private double antalEnheder;
-    private int antalGange;
     private ArrayList<LocalDate> datoer;
 
     public PN(LocalDate startDen, LocalDate slutDen, double antalEnheder) {
@@ -25,7 +24,6 @@ public class PN extends Ordination {
      */
     public boolean givDosis(LocalDate givesDen) {
         if (givesDen.isAfter(getStartDen()) && givesDen.isBefore(getSlutDen())){
-            antalGange++;
             datoer.add(givesDen);
             return true;
         }else {
@@ -42,7 +40,7 @@ public class PN extends Ordination {
         LocalDate førstegivning = datoer.get(0);
         LocalDate sidsteGivning = datoer.get(datoer.size()-1);
 
-        return (antalGange*antalEnheder)/ ChronoUnit.DAYS.between(førstegivning,sidsteGivning);
+        return (datoer.size()*antalEnheder)/ antalDage();
     }
 
     @Override
@@ -52,7 +50,7 @@ public class PN extends Ordination {
 
 
     public double samletDosis() {
-        return antalEnheder*antalGange;
+        return antalEnheder*datoer.size();
     }
 
     /**
@@ -60,7 +58,7 @@ public class PN extends Ordination {
      * @return
      */
     public int getAntalGangeGivet() {
-        return antalGange;
+        return datoer.size();
     }
 
     public double getAntalEnheder() {

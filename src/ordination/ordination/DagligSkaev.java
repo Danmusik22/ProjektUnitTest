@@ -18,6 +18,9 @@ public class DagligSkaev extends Ordination {
         Dosis dosis1 = new Dosis(tid, antal);
         dosis.add(dosis1);
     }
+    public ArrayList<Dosis> getDoser() {
+        return dosis;
+    }
 
     @Override
     public double samletDosis() {
