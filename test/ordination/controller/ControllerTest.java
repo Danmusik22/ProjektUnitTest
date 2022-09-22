@@ -1,6 +1,5 @@
 package ordination.controller;
 
-
 import org.junit.Test;
 
 class ControllerTest {
