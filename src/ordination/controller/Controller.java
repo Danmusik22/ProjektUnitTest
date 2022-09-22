@@ -1,10 +1,13 @@
 package ordination.controller;
 
+import javafx.scene.AmbientLight;
 import ordination.ordination.*;
 import ordination.storage.Storage;
 
+import javax.sound.sampled.DataLine;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -36,8 +39,16 @@ public class Controller {
 	 */
 	public PN opretPNOrdination(LocalDate startDen, LocalDate slutDen,
 								Patient patient, Laegemiddel laegemiddel, double antal) {
-		// TODO
-		return null;
+
+		if (startDen.isAfter(slutDen)){
+			throw new IllegalArgumentException("Startdato er senere end slutdato");
+		}
+		else {
+			PN pn = new PN(startDen, slutDen, antal);
+			pn.setLaegemiddel(laegemiddel);
+			patient.addOrdination(pn);
+			return pn;
+		}
 	}
 
 	/**
@@ -50,8 +61,31 @@ public class Controller {
 												LocalDate slutDen, Patient patient, Laegemiddel laegemiddel,
 												double morgenAntal, double middagAntal, double aftenAntal,
 												double natAntal) {
-		// TODO
-		return null;
+
+
+		if (startDen.isAfter(slutDen)){
+			throw new IllegalArgumentException("Startdato er senere end slutdato");
+		}
+		else {
+			DagligFast dagligFast = new DagligFast(startDen,slutDen);
+			dagligFast.setLaegemiddel(laegemiddel);
+			patient.addOrdination(dagligFast);
+
+			// Skal jeg bare selv bestemme klokkeslettet for hvornår det er morgen??
+			LocalTime morgen = LocalTime.of(9, 0);
+			LocalTime middag = LocalTime.of(12, 0);
+			LocalTime aften = LocalTime.of(18, 0);
+			LocalTime nat = LocalTime.of(23, 0);
+
+			Dosis d1 = new Dosis(morgen,morgenAntal);
+			Dosis d2 = new Dosis(middag,middagAntal);
+			Dosis d3 = new Dosis(aften,aftenAntal);
+			Dosis d4 = new Dosis(nat,natAntal);
+
+			dagligFast.createDagligDosis(d1,d2,d3,d4);
+
+			return dagligFast;
+		}
 	}
 
 	/**
@@ -65,8 +99,25 @@ public class Controller {
 	public DagligSkaev opretDagligSkaevOrdination(LocalDate startDen,
 												  LocalDate slutDen, Patient patient, Laegemiddel laegemiddel,
 												  LocalTime[] klokkeSlet, double[] antalEnheder) {
-		// TODO
-		return null;
+
+
+		if (startDen.isAfter(slutDen)){
+			throw new IllegalArgumentException("Startdato er senere end slutdato");
+		}
+		else if (klokkeSlet.length != antalEnheder.length){
+			throw new IllegalArgumentException("Der skal være lige så mange klokkeslet som antal enheder");
+		}
+		else{
+			DagligSkaev dagligSkaev = new DagligSkaev(startDen,slutDen);
+			dagligSkaev.setLaegemiddel(laegemiddel);
+			patient.addOrdination(dagligSkaev);
+
+
+			for (int i = 0; i < klokkeSlet.length; i++){
+				dagligSkaev.opretDosis(klokkeSlet[i],antalEnheder[i]);
+			}
+			return dagligSkaev;
+		}
 	}
 
 	/**
@@ -76,7 +127,9 @@ public class Controller {
 	 * Pre: ordination og dato er ikke null
 	 */
 	public void ordinationPNAnvendt(PN ordination, LocalDate dato) {
-		// TODO
+//		// TODO
+
+
 	}
 
 	/**
