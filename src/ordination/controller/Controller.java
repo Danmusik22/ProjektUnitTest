@@ -129,7 +129,6 @@ public class Controller {
 	public void ordinationPNAnvendt(PN ordination, LocalDate dato) {
 //		// TODO
 
-
 	}
 
 	/**
