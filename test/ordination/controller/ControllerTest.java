@@ -5,6 +5,6 @@ import org.junit.Test;
 class ControllerTest {
 
    @Test
-    void test_ordinationPNAnvendt() {
+    void test_anbefaletDosisPrDoegn() {
     }
 }
