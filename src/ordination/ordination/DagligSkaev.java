@@ -29,7 +29,7 @@ public class DagligSkaev extends Ordination {
         for (Dosis d1 : dosis){
             samletdosis = samletdosis + d1.getAntal();
         }
-        return samletdosis;
+        return samletdosis*antalDage();
     }
 
     @Override

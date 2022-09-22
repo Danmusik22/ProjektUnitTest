@@ -26,7 +26,7 @@ public class PN extends Ordination {
             datoer.add(givesDen);
             return true;
         }else {
-            return false;
+            throw new IllegalArgumentException("Ugyldig Dato");
         }
     }
 
@@ -39,7 +39,7 @@ public class PN extends Ordination {
         LocalDate førstegivning = datoer.get(0);
         LocalDate sidsteGivning = datoer.get(datoer.size()-1);
 
-        return (datoer.size()*antalEnheder)/ antalDage();
+        return (datoer.size()*antalEnheder)/ ChronoUnit.DAYS.between(førstegivning,sidsteGivning);
     }
 
     @Override
