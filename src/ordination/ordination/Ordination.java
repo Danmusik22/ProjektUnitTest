@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public abstract class Ordination {
     private LocalDate startDen;
     private LocalDate slutDen;
-    private ArrayList<Laegemiddel> laegemidler;
+    private Laegemiddel laegemiddel;
 
     // TODO Link til Laegemiddel check
     // TODO constructor (med specifikation) check
@@ -15,7 +15,6 @@ public abstract class Ordination {
     public Ordination(LocalDate startDen, LocalDate slutDen) {
         this.startDen = startDen;
         this.slutDen = slutDen;
-        laegemidler = new ArrayList<>();
     }
 
     public LocalDate getStartDen() {
@@ -30,15 +29,13 @@ public abstract class Ordination {
      * Link til lægemidler:
      * addlægemiddel
      */
-    public void addlaegemiddel(Laegemiddel laegemiddel){
-        laegemidler.add(laegemiddel);
+    public void setLaegemiddel(Laegemiddel laegemiddel){
+        this.laegemiddel = laegemiddel;
+    }
+    public Laegemiddel getLaegemiddel() {
+        return laegemiddel;
     }
 
-    public void removeLaegemiddel(Laegemiddel laegemiddel){
-        if (laegemidler.contains(laegemiddel)){
-            laegemidler.remove(laegemiddel);
-        }
-    }
 
     /**
      * Antal hele dage mellem startdato og slutdato. Begge dage inklusive.

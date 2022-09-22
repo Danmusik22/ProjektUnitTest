@@ -1,10 +1,19 @@
 package ordination.ordination;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 
-public class PN {
 
+public class PN extends Ordination {
     private double antalEnheder;
+    private ArrayList<LocalDate> datoer;
+
+    public PN(LocalDate startDen, LocalDate slutDen, double antalEnheder) {
+        super(startDen, slutDen);
+        this.antalEnheder = antalEnheder;
+        datoer = new ArrayList<>();
+    }
 
     /**
      * Registrerer at der er givet en dosis paa dagen givesDen
@@ -14,19 +23,34 @@ public class PN {
      * @return
      */
     public boolean givDosis(LocalDate givesDen) {
-        // TODO
-        return false;   
+        if (givesDen.isAfter(getStartDen()) && givesDen.isBefore(getSlutDen())){
+            datoer.add(givesDen);
+            return true;
+        }else {
+            return false;
+        }
     }
 
+    /**
+     * beregning af døgndosis - (antalgange * antalEnheder)/Antal dage mellem første
+     * og sidste givning.
+     * @return double, døgndosis.
+     */
     public double doegnDosis() {
-        // TODO
-        return 0.0;
+        LocalDate førstegivning = datoer.get(0);
+        LocalDate sidsteGivning = datoer.get(datoer.size()-1);
+
+        return (datoer.size()*antalEnheder)/ antalDage();
+    }
+
+    @Override
+    public String getType() {
+        return null;
     }
 
 
     public double samletDosis() {
-        // TODO
-        return 0.0;
+        return antalEnheder*datoer.size();
     }
 
     /**
@@ -34,8 +58,7 @@ public class PN {
      * @return
      */
     public int getAntalGangeGivet() {
-        // TODO
-        return-1;
+        return datoer.size();
     }
 
     public double getAntalEnheder() {
