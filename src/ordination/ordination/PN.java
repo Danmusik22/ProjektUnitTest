@@ -44,7 +44,7 @@ public class PN extends Ordination {
     }
 
     @Override
-    public String getType() {
+    public String getType() { // type=PN, Daglig osv
         return null;
     }
 

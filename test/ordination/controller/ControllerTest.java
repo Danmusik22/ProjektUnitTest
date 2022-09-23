@@ -6,5 +6,14 @@ class ControllerTest {
 
    @Test
     void test_anbefaletDosisPrDoegn() {
-    }
+       // Arrange
+
+
+       // Act
+
+
+       // Assert
+
+
+   }
 }
