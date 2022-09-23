@@ -23,11 +23,11 @@ public class PN extends Ordination {
      * @return
      */
     public boolean givDosis(LocalDate givesDen) {
-        if (givesDen.isAfter(getStartDen()) && givesDen.isBefore(getSlutDen())){
+        if (givesDen.isBefore(getStartDen()) || givesDen.isAfter(getSlutDen())){
+            throw new IllegalArgumentException("Ugyldig Dato");
+        }else {
             datoer.add(givesDen);
             return true;
-        }else {
-            throw new IllegalArgumentException("Ugyldig Dato");
         }
     }
 
@@ -40,12 +40,12 @@ public class PN extends Ordination {
         LocalDate førstegivning = datoer.get(0);
         LocalDate sidsteGivning = datoer.get(datoer.size()-1);
 
-        return (datoer.size()*antalEnheder)/ ChronoUnit.DAYS.between(førstegivning,sidsteGivning);
+        return (datoer.size()*antalEnheder)/ ChronoUnit.DAYS.between(førstegivning,sidsteGivning.plusDays(1));
     }
 
     @Override
     public String getType() { // type=PN, Daglig osv
-        return null;
+        return "PN";
     }
 
 
@@ -65,4 +65,7 @@ public class PN extends Ordination {
         return antalEnheder;
     }
 
+    public ArrayList<LocalDate> getDatoer() {
+        return datoer;
+    }
 }
