@@ -93,7 +93,7 @@ class ControllerTest {
     }
 
     @Test
-    public void test_OpretDagligFast_() {
+    public void test_OpretDagligFast_forskelligeAntal() {
         //Arrange
         LocalDate slutDato = LocalDate.of(2022, 10, 2);
         double morgenAntal = 1;
