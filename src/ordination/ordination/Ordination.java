@@ -14,6 +14,9 @@ public abstract class Ordination {
     // TODO constructor (med specifikation) check
 
     public Ordination(LocalDate startDen, LocalDate slutDen) {
+        if (startDen.isAfter(slutDen) || slutDen.isBefore(startDen)){
+            throw new IllegalArgumentException("Forkerte datoer");
+        }
         this.startDen = startDen;
         this.slutDen = slutDen;
     }

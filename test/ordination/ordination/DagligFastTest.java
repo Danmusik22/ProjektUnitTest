@@ -52,7 +52,7 @@ public class DagligFastTest extends TestCase {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             dagligFast = new DagligFast(startDato, slutDato);
         });
-        assertEquals(exception.getMessage(), "Startdato er senere end slutdato");
+        assertEquals(exception.getMessage(), "Forkerte datoer");
     }
 
     @Test
