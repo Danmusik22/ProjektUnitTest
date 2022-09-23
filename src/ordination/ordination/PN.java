@@ -19,13 +19,14 @@ public class PN extends Ordination {
      * Registrerer at der er givet en dosis paa dagen givesDen
      * Returnerer true hvis givesDen er inden for ordinationens gyldighedsperiode og datoen huskes
      * Retrurner false ellers og datoen givesDen ignoreres
+     *
      * @param givesDen
      * @return
      */
     public boolean givDosis(LocalDate givesDen) {
-        if (givesDen.isBefore(getStartDen()) || givesDen.isAfter(getSlutDen())){
+        if (givesDen.isBefore(getStartDen()) || givesDen.isAfter(getSlutDen())) {
             throw new IllegalArgumentException("Ugyldig Dato");
-        }else {
+        } else {
             datoer.add(givesDen);
             return true;
         }
@@ -34,13 +35,18 @@ public class PN extends Ordination {
     /**
      * beregning af døgndosis - (antalgange * antalEnheder)/Antal dage mellem første
      * og sidste givning.
+     *
      * @return double, døgndosis.
      */
     public double doegnDosis() {
-        LocalDate førstegivning = datoer.get(0);
-        LocalDate sidsteGivning = datoer.get(datoer.size()-1);
+        if (datoer.isEmpty()) {
+            return 0;
+        } else {
+            LocalDate førstegivning = datoer.get(0);
+            LocalDate sidsteGivning = datoer.get(datoer.size() - 1);
 
-        return (datoer.size()*antalEnheder)/ ChronoUnit.DAYS.between(førstegivning,sidsteGivning.plusDays(1));
+            return (datoer.size() * antalEnheder) / ChronoUnit.DAYS.between(førstegivning, sidsteGivning.plusDays(1));
+        }
     }
 
     @Override
@@ -50,11 +56,12 @@ public class PN extends Ordination {
 
 
     public double samletDosis() {
-        return antalEnheder*datoer.size();
+        return antalEnheder * datoer.size();
     }
 
     /**
      * Returnerer antal gange ordinationen er anvendt
+     *
      * @return
      */
     public int getAntalGangeGivet() {
@@ -66,6 +73,7 @@ public class PN extends Ordination {
     }
 
     public ArrayList<LocalDate> getDatoer() {
+
         return datoer;
     }
 }
