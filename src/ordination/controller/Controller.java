@@ -15,7 +15,7 @@ public class Controller {
 	private Storage storage;
 	private static Controller controller;
 
-	private Controller() {
+	Controller() {
 		storage = new Storage();
 	}
 
@@ -127,9 +127,7 @@ public class Controller {
 	 * Pre: ordination og dato er ikke null
 	 */
 	public void ordinationPNAnvendt(PN ordination, LocalDate dato) {
-//		// TODO
-
-
+		ordination.givDosis(dato);
 	}
 
 	/**
@@ -139,8 +137,13 @@ public class Controller {
 	 * Pre: patient og lægemiddel er ikke null
 	 */
 	public double anbefaletDosisPrDoegn(Patient patient, Laegemiddel laegemiddel) {
-		//TODO
-		return 0;
+		if (patient.getVaegt()<25){
+			return patient.getVaegt()*laegemiddel.getEnhedPrKgPrDoegnLet();
+		}else if (patient.getVaegt()<120){
+			return patient.getVaegt()* laegemiddel.getEnhedPrKgPrDoegnNormal();
+		}else {
+			return patient.getVaegt()* laegemiddel.getEnhedPrKgPrDoegnTung();
+		}
 	}
 
 	/**
@@ -150,9 +153,17 @@ public class Controller {
 	 */
 	public int antalOrdinationerPrVægtPrLægemiddel(double vægtStart,
 			double vægtSlut, Laegemiddel laegemiddel) {
-		// TODO
-
-		return 0;
+		int count = 0;
+		for (Patient p : getAllPatienter()){
+			if (p.getVaegt()>= vægtStart && p.getVaegt()<=vægtSlut){
+				for (Ordination ord : p.getOrdinationer()){
+					if (ord.getLaegemiddel() == laegemiddel){
+						count++;
+					}
+				}
+			}
+		}
+		return count;
 	}
 
 	public List<Patient> getAllPatienter() {

@@ -1,6 +1,7 @@
 package ordination.ordination;
 
 import java.time.LocalDate;
+
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
@@ -27,7 +28,7 @@ public abstract class Ordination {
 
     /**
      * Link til lægemidler:
-     * addlægemiddel
+     * setlægemiddel
      */
     public void setLaegemiddel(Laegemiddel laegemiddel){
         this.laegemiddel = laegemiddel;
@@ -42,7 +43,9 @@ public abstract class Ordination {
      * @return antal dage ordinationen gælder for
      */
     public int antalDage() {
-        return (int) ChronoUnit.DAYS.between(startDen, slutDen) + 1;
+
+        int days = (int) ChronoUnit.DAYS.between(getStartDen(), getSlutDen()) + 1;
+        return days;
     }
 
     @Override
